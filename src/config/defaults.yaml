@@ -1,0 +1,22 @@
+dataset:
+  augmentations: []
+  img_size: 512
+  test:
+    batch_size: 16
+    csv_path: /home/semyon/cardiomethry/ChestXrayIndex/test.csv
+    shuffle: False
+  train:
+    batch_size: 16
+    csv_path: /home/semyon/cardiomethry/ChestXrayIndex/train_small.csv
+    shuffle: True
+  transforms: []
+  val:
+    batch_size: 16
+    csv_path: /home/semyon/cardiomethry/ChestXrayIndex/val.csv
+    shuffle: False
+model:
+  final_activation: relu
+  in_channels: 3
+  load_state: 0
+  name: Baseline
+  target_points: [0]
