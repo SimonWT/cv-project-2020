@@ -1,0 +1,47 @@
+dataset:
+  augmentations: []
+  img_size: 512
+  root: /home/semyon/cardiomethry/ChestXrayIndex
+  scale: True
+  sigma: 8
+  test:
+    batch_size: 16
+    csv_path: /home/semyon/projects/cardiomethry/ChestXrayIndex/test.csv
+    shuffle: False
+  train:
+    batch_size: 16
+    csv_path: /home/semyon/projects/cardiomethry/ChestXrayIndex/train.csv
+    shuffle: True
+  transforms: [{'name': 'ToTensorV2'}]
+  val:
+    batch_size: 16
+    csv_path: /home/semyon/projects/cardiomethry/ChestXrayIndex/val.csv
+    shuffle: False
+model:
+  final_activation: [{'name': 'ReLU'}]
+  hourglass_inter_channels: 5
+  hourglass_inter_increase: 4
+  hourglass_stack: 1
+  in_channels: 3
+  load_state: 0
+  name: Hourglass
+  target_points: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  weights_imagenet: False
+  weights_init: False
+name: hourglass_new1
+system:
+  checkpoints_root: training_checkpoints
+  num_gpu: 1
+  num_workers: 0
+  stream: out
+testing:
+  metrics: [{'name': 'MAE'}]
+  save_visuals: False
+training:
+  criterion: [{'name': 'HourglassLoss'}]
+  dump_period: 1
+  log_interval: 50
+  num_epochs: 1
+  optimizer: [{'name': 'Adam', 'lr': 0.01}]
+  save_visuals: True
+  scheduler: [{'name': 'CosineAnnealingWarmRestarts', 'T_0': 10}]
