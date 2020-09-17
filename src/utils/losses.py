@@ -11,6 +11,7 @@ class HourglassLoss(Module):
         super().__init__()
 
     def batch_loss(self, output, target):
+        # MSE
         return ((output - target)**2).mean() #TODO: add any loss type
 
     def forward(self, combined_heatmap_output, target):
